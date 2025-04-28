@@ -49,14 +49,15 @@ EXCLUDE_TEST_FRAMEWORK="!test-framework,!test-framework/bom,!test-framework/core
 EXCLUDE_TEST_FRAMEWORK=$EXCLUDE_TEST_FRAMEWORK"!test-framework/db-mssql,!test-framework/db-mysql,!test-framework/db-oracle,"
 EXCLUDE_TEST_FRAMEWORK=$EXCLUDE_TEST_FRAMEWORK"!test-framework/db-postgres,!test-framework/ui,!test-framework/examples,"
 EXCLUDE_TEST_FRAMEWORK=$EXCLUDE_TEST_FRAMEWORK"!test-framework/examples/providers,!test-framework/examples/tests,"
-EXCLUDE_TEST_FRAMEWORK=$EXCLUDE_TEST_FRAMEWORK"!test-framework/email-server,!test-framework/ui,!test-framework/oauth-nimbus-poc,"
+EXCLUDE_TEST_FRAMEWORK=$EXCLUDE_TEST_FRAMEWORK"!test-framework/email-server,!test-framework/ui,"
 EXCLUDE_TEST_FRAMEWORK=$EXCLUDE_TEST_FRAMEWORK"!test-framework/remote-providers,!test-framework/remote"
 
 EXCLUDE_MODULE=$EXCLUDE_DOCS,$EXCLUDE_DEPENDENCY,$EXCLUDE_FEDERATION,$EXCLUDE_INTEGRATION,$EXCLUDE_JS
 EXCLUDE_MODULE=$EXCLUDE_MODULE,$EXCLUDE_QUARKUS,$EXCLUDE_REST,$EXCLUDE_THEMES,$EXCLUDE_TEST,$EXCLUDE_TEST_FRAMEWORK
 
 ## Execute maven build
-$MVN clean package dependency:copy-dependencies -pl "$EXCLUDE_MODULE" $MAVEN_ARGS
+# $MVN clean package dependency:copy-dependencies -pl "$EXCLUDE_MODULE" $MAVEN_ARGS
+$MVN clean package dependency:copy-dependencies $MAVEN_ARGS
 
 # Dependency for Mockito and MockWebService functionality for mocking objects and web service
 mkdir -p fuzzer-dependencies
